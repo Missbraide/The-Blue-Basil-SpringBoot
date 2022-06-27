@@ -88,7 +88,7 @@ crossorigin="anonymous"
           We are looking forward to seeing you!</p>
         </div>
 <section class="form">
-    <form action="#" th:action="@{/saveReservation}"  th:object="${reservation}" method="post" class="form-1" id="search-form">
+    <form action="#" th:action="@{/saveReservation}"  th:object="${reservation}" method="POST" class="form-1" id="search-form">
         <input type="text" th:field="*{resFirstName}" placeholder="First Name *" class="res-fname" id="name"  onchange="displayName()">
         <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname"><br>
         <input type="tel" th:field="*{resPhone}" placeholder="Phone Number *" class="res-phone"><br>
@@ -137,7 +137,7 @@ crossorigin="anonymous"
         <!-- Modal footer -->
         <!-- mod= modal upd = update -->
         <div class="modal-footer">
-          <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a href="./reservation-list.html" class="mod-upd-link">Update</a></button>
+          <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a th:href="@{/listReservations}" class="mod-upd-link">Update</a></button>
           <button type="button" class="btn  close" data-bs-dismiss="modal" >Close</button>
 
         </div>

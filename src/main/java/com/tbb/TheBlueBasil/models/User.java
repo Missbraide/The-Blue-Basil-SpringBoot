@@ -36,15 +36,27 @@ public class User {
     @Column(name = "password")
     String password;
 
-
+    @NonNull
     @Column(name = "role")
     boolean isManager;
 
+    @NonNull
     boolean isCustomer;
-
+    @NonNull
     boolean isEmployee;
 
-
+    public User(long id, @NonNull String username, @NonNull String email, @NonNull String password, @NonNull boolean isManager, @NonNull boolean isCustomer, @NonNull boolean isEmployee, Reservation reservation, Set<AuthGroup> authGroups, Menu menu) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.isManager = isManager;
+        this.isCustomer = isCustomer;
+        this.isEmployee = isEmployee;
+        this.reservation = reservation;
+        this.authGroups = authGroups;
+        this.menu = menu;
+    }
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id")
@@ -54,10 +66,13 @@ public class User {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_null"),
             inverseJoinColumns = @JoinColumn(name = "roles_null"))
-    private Set<Role> roles = new LinkedHashSet<>();
+    private Set<AuthGroup> authGroups = new LinkedHashSet<>();
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "menu_id")
     private Menu menu;
+
+    //Helper Method
+
 
 }

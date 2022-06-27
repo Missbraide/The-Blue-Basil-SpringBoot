@@ -21,10 +21,10 @@ public class ReservationController {
 
 
     //display list of reservations
-    @GetMapping("/")
+    @GetMapping("/listReservations")
     public String viewReservationPage(Model model){
         model.addAttribute("listReservations", reservationService.getAllReservations());
-        return "reservation";
+        return "reservation-list";
     }
 
     @GetMapping("/showNewReservationForm")
@@ -35,7 +35,7 @@ public class ReservationController {
         return "reservation";
     }
     @PostMapping("/saveReservation")
-    public String saveReservation(@ModelAttribute("employee") Reservation reservation) {
+    public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
         // save reservation to database
        reservationService.saveReservation(reservation);
         return "redirect:/";

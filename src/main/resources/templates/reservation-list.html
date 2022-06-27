@@ -76,26 +76,34 @@ crossorigin="anonymous"
     <div><img src="../media/home-third-sec-bg-1.jpg" class="menu-hero-pic" alt="restaurant" width="1920px"></div>
 </section>
   <div class="container my-2">
-      <h1>Employees List</h1>
+      <h1>Reservations List</h1>
 
-      <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+      <a th:href="@{/showNewReservationForm}" class="btn btn-primary btn-sm mb-3"> Add Reservation </a>
 
       <table border="1" class="table table-striped table-responsive-md">
           <thead>
           <tr>
-              <th>Employee First Name</th>
-              <th>Employee Last Name</th>
-              <th>Employee Email</th>
-              <th> Actions </th>
+              <th>Reservation First Name</th>
+              <th>Reservation Last Name</th>
+              <th>Email</th>
+              <th> Phone Number </th>
+              <th> No. Guests </th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Addtl Info</th>
           </tr>
           </thead>
           <tbody>
-          <tr th:each="employee : ${listEmployees}">
-              <td th:text="${employee.firstName}"></td>
-              <td th:text="${employee.lastName}"></td>
-              <td th:text="${employee.email}"></td>
-              <td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
-                  <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+          <tr th:each="reservation : ${listReservations}">
+              <td th:text="${reservation.resFirstName}"></td>
+              <td th:text="${reservation.resLastName}"></td>
+              <td th:text="${reservation.resPhone}"></td>
+              <td th:text="${reservation.resEmail}"></td>
+              <td th:text="${reservation.resNoOfGuests}"></td>
+              <td th:text="${reservation.resDate}"></td>
+              <td th:text="${reservation.addInfo}"></td>
+              <td> <a th:href="@{/showFormForUpdate/{id}(id=${reservation.id})}" class="btn btn-primary">Update</a>
+                  <a th:href="@{/deleteReservation/{id}(id=${reservation.id})}" class="btn btn-danger">Delete</a>
               </td>
           </tr>
           </tbody>
