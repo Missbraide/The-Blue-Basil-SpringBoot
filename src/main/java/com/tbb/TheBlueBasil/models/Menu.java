@@ -25,18 +25,21 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @NonNull
     @Column(name = "item_name")
      String itemName;
-
+@NonNull
     @Column(name = "item_desc")
     String itemDesc;
 
+@NonNull
     @Column(name = "item_price")
    Double itemPrice;
 
+@NonNull
     boolean availability;
 
-
+@NonNull
     @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
     private Set<User> users = new LinkedHashSet<>();
 

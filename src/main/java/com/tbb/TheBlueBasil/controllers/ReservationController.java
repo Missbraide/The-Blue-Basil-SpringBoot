@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping
+
 public class ReservationController {
 
     @Autowired
@@ -19,14 +19,14 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-
     //display list of reservations
-    @GetMapping("/")
-    public String viewReservationPage(Model model){
+    @GetMapping("/listReservations")
+    public String viewReservationListPage(Model model){
         model.addAttribute("listReservations", reservationService.getAllReservations());
-        return "reservation";
+        return "reservation-list";
     }
 
+    //
     @GetMapping("/showNewReservationForm")
     public String showNewReservationForm(Model model) {
         // create model attribute to bind form data
@@ -34,8 +34,14 @@ public class ReservationController {
         model.addAttribute("reservation", reservation);
         return "reservation";
     }
+
+
+
+
+
+
     @PostMapping("/saveReservation")
-    public String saveReservation(@ModelAttribute("employee") Reservation reservation) {
+    public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
         // save reservation to database
        reservationService.saveReservation(reservation);
         return "redirect:/";
@@ -52,9 +58,9 @@ public class ReservationController {
     }
 
     @GetMapping("/deleteReservation/{id}")
-    public String deleteEmployee(@PathVariable(value = "id") long id) {
+    public String delete(@PathVariable(value = "id") long id) {
 
-        // call delete employee method
+        // call delete  method
         this.reservationService.deleteReservationById(id);
         return "redirect:/";
     }
