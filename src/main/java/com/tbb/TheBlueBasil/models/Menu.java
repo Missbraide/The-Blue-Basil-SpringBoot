@@ -1,0 +1,43 @@
+package com.tbb.TheBlueBasil.models;
+
+
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
+@Slf4j
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Data
+@Entity
+@Table(name = "menus")
+public class Menu {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+
+    @Column(name = "item_name")
+     String itemName;
+
+    @Column(name = "item_desc")
+    String itemDesc;
+
+    @Column(name = "item_price")
+   Double itemPrice;
+
+    boolean availability;
+
+
+    @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
+    private Set<User> users = new LinkedHashSet<>();
+
+}

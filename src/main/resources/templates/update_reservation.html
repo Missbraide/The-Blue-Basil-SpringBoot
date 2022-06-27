@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid res">
+<div class="res-txt">
+    <h3>RESERVATION</h3>
+
+    <p>Bookings for the same day can not be made online. If you would like to book a table for today or for a larger group, <br> please contact us on info@thebluebasil.com or 123-456-7890.
+        <br><br>
+        We are looking forward to seeing you!</p>
+</div>
+<section class="form">
+    <form action="#" th:action="@{/saveReservation}" th:object="${reservation}" method="POST" class="form-1" id="search-form">
+        <!-- hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{resFirstName}" placeholder="First Name *"class="res-fname" id="name"  onchange="displayName()">
+
+        <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname"><br>
+
+        <input type="tel" th:field="*{resPhone" placeholder="Phone Number *" class="res-phone"><br>
+
+        <input type="email" th:field="*{resEmail}" placeholder="Email *" class="res-email"> <br>
+
+        <input type="text" th:field="*{resNumOfGuests}" placeholder="Number Of Guests *" class="guest">
+
+        <div class="mb-3 ">
+            <textarea th:field="*{addInfo}" class="form-control add-info" id="exampleFormControlTextarea1" rows="3" placeholder="Additional Information"></textarea>
+        </div>
+        <label for="date">Reservation Date</label>
+        <input type="text" id="date" placeholder="Pick Date">
+        <label for="time">Arrival Time</label>
+        <input type="time" placeholder="Pick Time" id="time">
+    </form>
+    <button type="submit" class="btn book-res" data-bs-toggle="modal" data-bs-target="#myModal">
+       Update Reservation
+    </button>
+</section>
+</div>
+</div>
+</body>
+</html>
