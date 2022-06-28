@@ -54,20 +54,20 @@ public class User {
         this.isCustomer = isCustomer;
         this.isEmployee = isEmployee;
         this.reservation = reservation;
-        this.authGroups = authGroups;
+//        this.authGroups = authGroups;
         this.menu = menu;
     }
-
+    @NonNull
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
-
-    @ManyToMany
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_null"),
-            inverseJoinColumns = @JoinColumn(name = "roles_null"))
-    private Set<AuthGroup> authGroups = new LinkedHashSet<>();
-
+//    @NonNull
+//    @ManyToMany
+//    @JoinTable(name = "users_roles",
+//            joinColumns = @JoinColumn(name = "user_null"),
+//            inverseJoinColumns = @JoinColumn(name = "roles_null"))
+//    private Set<AuthGroup> authGroups = new LinkedHashSet<>();
+    @NonNull
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "menu_id")
     private Menu menu;
