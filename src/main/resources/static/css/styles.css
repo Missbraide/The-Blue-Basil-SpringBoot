@@ -29,6 +29,8 @@ footer h4{
     font-size: 30px;
 
 }
+
+
 footer p{
     font-family: var(--body-fonts);
     font-size: 20px;
@@ -220,4 +222,14 @@ font-size: 40px;
 
 .quote h3{
    font-family: var(--sub-heading-fonts);
+}
+
+.error-bg{
+padding-top: 300px;
+background-color: var(--second-color);}
+
+.gallery, .get-in-touch{
+    padding:300px;
+    display: block;
+    text-align: center;
 }
