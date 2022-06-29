@@ -20,6 +20,11 @@ import java.util.Set;
 @Slf4j
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
+
+//
+//@NamedNativeQuery(name = "Reservation.findReservations", query = "select r.first_name, r.last_name, r.email, r.no_of_guests, r.phone_num from reservations as r join users on u.id= ")
+//
+
 @Entity
 @Table(name ="reservations")
 public class Reservation {
@@ -65,4 +70,6 @@ public class Reservation {
     @OneToMany(mappedBy = "reservation", orphanRemoval = true)
     private Set<User> users = new LinkedHashSet<>();
 
+    public Reservation(String ellaid, String ella, String password) {
+    }
 }
