@@ -19,7 +19,19 @@ public class HomeController {
     @GetMapping(value = {"/reservation"})
     public String viewReservationPage(){return "reservation";}
 
+
+    @GetMapping(value = {"/gallery"})
+    public String viewGalleryPage(){return "gallery";}
+
+    @GetMapping(value = {"/get-in-touch"})
+    public String viewGetInTouchPage(){return "get-in-touch";}
+
+    @GetMapping(value = {"/login"})
+    public String viewLoginPage(){return "login";}
+
 }
+
+
 
 //    @GetMapping("/login")
 //    public String login(){
