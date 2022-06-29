@@ -61,6 +61,7 @@ public class User {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
+
 //    @NonNull
 //    @ManyToMany
 //    @JoinTable(name = "users_roles",
@@ -71,6 +72,7 @@ public class User {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "menu_id")
     private Menu menu;
+
 
     //Helper Method
 

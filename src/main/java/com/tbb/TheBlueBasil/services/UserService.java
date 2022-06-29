@@ -1,6 +1,7 @@
 package com.tbb.TheBlueBasil.services;
 
 import com.tbb.TheBlueBasil.data.UserRepository;
+import com.tbb.TheBlueBasil.models.Reservation;
 import com.tbb.TheBlueBasil.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,8 @@ public class UserService {
 
     public void deleteUserById(long id) {
 
+    }
+
+    public void saveOrUpdate(User user) {
     }
 }
