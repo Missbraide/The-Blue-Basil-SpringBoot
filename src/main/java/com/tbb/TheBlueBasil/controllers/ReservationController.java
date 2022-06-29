@@ -3,13 +3,15 @@ package com.tbb.TheBlueBasil.controllers;
 
 import com.tbb.TheBlueBasil.models.Reservation;
 import com.tbb.TheBlueBasil.services.ReservationService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @Controller
-@RequestMapping
+
 public class ReservationController {
 
     @Autowired
@@ -36,9 +38,11 @@ public class ReservationController {
     }
     @PostMapping("/saveReservation")
     public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
+       log.info("New Reservation");
+       log.info("Reservation before save {}", reservation);
         // save reservation to database
        reservationService.saveReservation(reservation);
-        return "redirect:/";
+        return "redirect:/listReservations";
     }
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
