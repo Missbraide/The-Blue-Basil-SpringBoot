@@ -22,6 +22,7 @@ public class ReservationService {
 
 
     public void saveReservation(Reservation reservation) {
+        reservationRepository.save(reservation);
 
     }
 
