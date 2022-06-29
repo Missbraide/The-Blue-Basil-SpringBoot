@@ -45,7 +45,7 @@ crossorigin="anonymous"
           We are looking forward to seeing you!</p>
         </div>
 <section class="form">
-    <form action="#" th:action="@{/saveReservation}"  th:object="${reservation}" method="POST" class="form-1" id="search-form">
+    <form  th:action="@{/saveReservation}"  th:object="${reservation}" method="POST" class="form-1" id="search-form">
         <input type="text" th:field="*{resFirstName}" placeholder="First Name *" class="res-fname" id="name"  onchange="displayName()">
         <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname"><br>
         <input type="tel" th:field="*{resPhone}" placeholder="Phone Number *" class="res-phone"><br>
@@ -55,14 +55,16 @@ crossorigin="anonymous"
             <textarea class="form-control add-info"   th:field="*{addInfo}" id="exampleFormControlTextarea1" rows="3" placeholder="Additional Information"></textarea>
           </div>
           <label for="date">Reservation Date</label>
-          <input type="text" id="date" placeholder="Pick Date">
+          <input th:field="*{resDate}" type="text" id="date" placeholder="Pick Date">
           <label for="time">Arrival Time</label>
           <input type="time" id="time" placeholder="Pick Time">
+        <br>
+        <button type="submit" class="btn book-res" data-bs-toggle="modal" data-bs-target="#myModal">
+            Book Reservation
+        </button>
     </form>
 
-    <button type="submit" class="btn book-res" data-bs-toggle="modal" data-bs-target="#myModal">
-        Book Reservation
-      </button>
+
 </section>
 </div>
 </div>
