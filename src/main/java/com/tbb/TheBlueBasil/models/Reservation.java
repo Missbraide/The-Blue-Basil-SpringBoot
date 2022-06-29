@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -29,7 +29,7 @@ import java.util.Set;
 @Table(name ="reservations")
 public class Reservation {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @NonNull
@@ -42,7 +42,7 @@ public class Reservation {
 
     @NonNull
     @Column(name ="reserved_date")
-    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     Date resDate;
 
 //    @NonNull
@@ -67,9 +67,9 @@ public class Reservation {
 @Column(name = "addtl_info")
     String addInfo;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "reservation", orphanRemoval = true)
     private Set<User> users = new LinkedHashSet<>();
 
-    public Reservation(String ellaid, String ella, String password) {
-    }
+
 }
