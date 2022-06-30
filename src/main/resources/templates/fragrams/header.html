@@ -7,7 +7,7 @@
 <body>
 <header th:fragment="header" class="fixed-top bg-light mb-5" >
   <span class=" banner">Happy Hour Starts at 4pm!</span>
-  <img src="./media/tbb-logo.png" class="d-block mx-auto" alt="Logo" width="350px">
+  <img th:src="@{/media/tbb-logo.png}" class="d-block mx-auto" alt="Logo" width="350px">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,14 +34,17 @@
             <a class="nav-link"  href="./html/get-in-touch.html" th:href="@{/get-in-touch}" >Get In Touch</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link " th:href="@{/login}" href="#" id="navbarDropdownMenuLink" >
               Log In
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Customer</a></li>
-              <li><a class="dropdown-item" href="#">Employee</a></li>
-              <li><a class="dropdown-item" href="#">Manager</a></li>
-            </ul>
+<!--            <a class="dropdown-toggle" th:href="@{/login}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--              Log In-->
+<!--            </a>-->
+<!--            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
+<!--              <li><a class="dropdown-item" href="#">Customer</a></li>-->
+<!--              <li><a class="dropdown-item" href="#">Employee</a></li>-->
+<!--              <li><a class="dropdown-item" href="#">Manager</a></li>-->
+<!--            </ul>-->
           </li>
         </ul>
       </div>
