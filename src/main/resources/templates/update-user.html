@@ -35,40 +35,35 @@
     <div><img src="../media/home-third-sec-bg-1.jpg" class="menu-hero-pic" alt="restaurant" width="1920px"></div>
 </section>
 <div class="container-fluid res">
-<div class="res-txt">
-    <h3>UPDATE RESERVATION</h3>
+    <div class="res-txt">
+        <h3>UPDATE RESERVATION</h3>
 
-    <p>Bookings for the same day can not be made online. If you would like to book a table for today or for a larger group, <br> please contact us on info@thebluebasil.com or 123-456-7890.
-        <br><br>
-        We are looking forward to seeing you!</p>
-</div>
-<section class="form">
-    <form action="#" th:action="@{/saveReservation}" th:object="${reservation}" method="POST" class="form-1" id="search-form">
-        <!-- hidden form field to handle update -->
-        <input type="hidden" th:field="*{id}" />
+        <p>Bookings for the same day can not be made online. If you would like to book a table for today or for a larger group, <br> please contact us on info@thebluebasil.com or 123-456-7890.
+            <br><br>
+            We are looking forward to seeing you!</p>
+    </div>
+    <section class="form">
+        <form action="#" th:action="@{/saveReservation}" th:object="${reservation}" method="POST" class="form-1" id="search-form">
+            <!-- hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}" />
 
-        <input type="text" th:field="*{resFirstName}" placeholder="First Name *"class="res-fname" id="name"  onchange="displayName()">
+            <input type="text" th:field="*{firstName}" placeholder="First Name *"class="res-fname" id="name"  onchange="displayName()">
 
-        <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname"><br>
+            <input type="text" th:field="*{lastName}" placeholder="Last Name *" class="res-lname"><br>
 
-        <input type="tel" th:field="*{resPhone}" placeholder="Phone Number *" class="res-phone"><br>
+            <input type="email" th:field="*{email}" placeholder="Email *" class="res-email"> <br>
 
-        <input type="email" th:field="*{resEmail}" placeholder="Email *" class="res-email"> <br>
+            <input type="tel" th:field="*{password}" placeholder="Phone Number *" class="res-phone"><br>
 
-        <input type="text" th:field="*{resNoOfGuests}" placeholder="Number Of Guests *" class="guest">
 
-        <div class="mb-3 ">
-            <textarea th:field="*{addInfo}" class="form-control add-info" id="exampleFormControlTextarea1" rows="3" placeholder="Additional Information"></textarea>
-        </div>
-        <label for="date">Reservation Date</label>
-        <input type="text" id="date" placeholder="Pick Date">
-        <label for="time">Arrival Time</label>
-        <input type="time" placeholder="Pick Time" id="time">
-    </form>
-    <button type="submit" class="btn book-res" data-bs-toggle="modal" data-bs-target="#myModal">
-       Update Reservation
-    </button>
-</section>
+
+
+
+        </form>
+        <button type="submit" class="btn book-res" data-bs-toggle="modal" data-bs-target="#myModal">
+            Update User
+        </button>
+    </section>
 
 
 
@@ -95,14 +90,14 @@
                 <!-- Modal footer -->
                 <!-- mod= modal upd = update -->
                 <div class="modal-footer" >
-                    <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a th:href="@{/listReservations}" class="mod-upd-link">Update</a></button>
+                    <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a th:href="@{/listUsers}" class="mod-upd-link">Update</a></button>
                     <button type="button" class="btn  close" data-bs-dismiss="modal" >Close</button>
 
                 </div>
 
             </div>
         </div>
-</div>
+    </div>
 </div>
 
 <div th:replace="fragrams/footer :: footer"></div>

@@ -35,80 +35,40 @@
 <section class="menu-hero">
     <div><img src="../media/home-third-sec-bg-1.jpg" class="menu-hero-pic" alt="restaurant" width="1920px"></div>
 </section>
+<section class="menu-hero">
+    <div><img src="../media/home-third-sec-bg-1.jpg" class="menu-hero-pic" alt="restaurant" width="1920px"></div>
+</section>
 <div class="container my-2">
     <h1>Users</h1>
 
-    <form th:action="@users/findusername}" autocomplete="off" method="post">
-        <div class="input-group mb-3">
-            <input type="text" name="email" class="form-control" placeholder="Student's Username" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Find</button>
-        </div>
-    </form>
-    <div th:if="${user_not_found}">
-        <p class="text-warning" th:text="${user_not_found}"></p>
-    </div>
-    <div th:if="${user}">
+    <a th:href="@{/showNewUserForm}" class="btn btn-add btn-sm mb-3"> Add Reservation </a>
 
     <table border="1" class="table table-striped table-responsive-md">
         <thead>
         <tr>
-            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Email</th>
-            <th>Password</th>
-            <th> Role </th>
-
+            <th> Password </th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row" th:text="${user.email}"></th>
-            <td th:text="${user.name}"></td>
-            <td th:text="${user.password}"></td>
+        <tr th:each="reservation : ${listUsers}">
+            <td th:text="${users.firstName}"></td>
+            <td th:text="${users.lastName}"></td>
+            <td th:text="${users.email}"></td>
+            <td th:text="${users.password}"></td>
             <td>
-                <p class="d-inline" th:each="course: ${user.role}">
+                <a th:href="@{/showFormForUpdate/{id}(id=${user.id})}" class="btn btn-update">Update</a>
 
-                </p>
+                <a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-delete">Delete</a>
             </td>
-
         </tr>
         </tbody>
+
+
     </table>
-</div>
-</div>
-<div class="row gx-5 justify-content-center">
-    <div class="col-lg-10">
-        <h1 class="text-white">Student List</h1>
-        <div th:if="${message}">
-            <p class="text-warning" th:text="${message}"></p>
-        </div>
-        <table class="table table-dark">
-            <thead>
-            <tr>
-                <th scope="col">Email</th>
-                <th scope="col">Name</th>
-                <th scope="col">Password</th>
-                <th scope="col">Role</th>
-                <th scope="col">Edit</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="user: ${users}">
-                <th scope="row" th:text="${user.email}"></th>
-                <td th:text="${user.name}"></td>
-                <td>********</td>
-                <td>
-                    <p class="d-inline" th:each="role: ${user.roles}">
-                        <span class="mx-1" th:text="${course.name}"></span>
-                    </p>
-                </td>
-
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-</div>
 </div>
 
 <div th:replace="fragrams/footer :: footer"/>
