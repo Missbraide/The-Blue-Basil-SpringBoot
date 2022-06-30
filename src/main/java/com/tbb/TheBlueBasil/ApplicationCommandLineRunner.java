@@ -4,6 +4,7 @@ import com.tbb.TheBlueBasil.data.AuthGroupRepository;
 import com.tbb.TheBlueBasil.data.MenuRepository;
 import com.tbb.TheBlueBasil.data.UserRepository;
 import com.tbb.TheBlueBasil.models.AuthGroup;
+import com.tbb.TheBlueBasil.models.Menu;
 import com.tbb.TheBlueBasil.models.Reservation;
 import com.tbb.TheBlueBasil.models.User;
 import com.tbb.TheBlueBasil.services.ReservationService;
@@ -46,8 +47,8 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-
-
+        userRepository.save(new User("username", "abc@aol.com", "password", true, true, true));
+        userRepository.save(new User("username", "lola@gmail.com", "password", true, true, true));
 
 
     }
