@@ -44,4 +44,7 @@ public class Menu {
     @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
     private Set<User> users = new LinkedHashSet<>();
 
+
+
+
 }
