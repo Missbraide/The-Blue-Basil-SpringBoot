@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -26,8 +26,11 @@ public class User {
 
 
     @NonNull
-    @Column(name = "username")
-    String username;
+    @Column(name = "first_name")
+    String firstName;
+    @NonNull
+    @Column(name = "last_name")
+    String lastName;
     @Id
     @NonNull
     @Column(name = "email")
@@ -37,46 +40,17 @@ public class User {
     @Column(name = "password")
     String password;
 
-    @NonNull
-    boolean isManager;
-
-    @NonNull
-    boolean isCustomer;
-    @NonNull
-    boolean isEmployee;
+//    public User(@NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String password) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.password = password;
+//    }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Reservation> reservations = new LinkedHashSet<>();
 
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-//    @JoinTable(name = "users_reservations",
-//            joinColumns = @JoinColumn(name = "user_null"),
-//            inverseJoinColumns = @JoinColumn(name = "reservations_null"))
-//    private Set<Reservation> reservations = new LinkedHashSet<>();
 
-    public User( @NonNull String username, @NonNull String email, @NonNull String password, @NonNull boolean isManager, @NonNull boolean isCustomer, @NonNull boolean isEmployee, Reservation reservation, Set<AuthGroup> authGroups, Menu menu) {
-
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.isManager = isManager;
-        this.isCustomer = isCustomer;
-        this.isEmployee = isEmployee;
-//        this.reservation = reservation;
-//        this.authGroups = authGroups;
-        this.menu = menu;
-    }
-//    @NonNull
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "reservation_id")
-//    private Reservation reservation;
-
-//    @NonNull
-//    @ManyToMany
-//    @JoinTable(name = "users_roles",
-//            joinColumns = @JoinColumn(name = "user_null"),
-//            inverseJoinColumns = @JoinColumn(name = "roles_null"))
-//    private Set<AuthGroup> authGroups = new LinkedHashSet<>();
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "menu_id")
@@ -95,11 +69,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return isManager == user.isManager && isCustomer == user.isCustomer && isEmployee == user.isEmployee && username.equals(user.username) && email.equals(user.email) && password.equals(user.password) && Objects.equals(reservations, user.reservations) && menu.equals(user.menu);
+        return firstName.equals(user.firstName) && lastName.equals(user.lastName) && email.equals(user.email) && password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, email, password, isManager, isCustomer, isEmployee, reservations, menu);
+        return Objects.hash(firstName, lastName, email, password);
     }
 }
