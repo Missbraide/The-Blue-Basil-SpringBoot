@@ -1,6 +1,7 @@
 package com.tbb.TheBlueBasil.controllers;
 
 
+import com.tbb.TheBlueBasil.data.UserRepository;
 import com.tbb.TheBlueBasil.models.Reservation;
 import com.tbb.TheBlueBasil.services.ReservationService;
 import lombok.extern.slf4j.Slf4j;
@@ -8,19 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
 @Controller
 
 public class ReservationController {
 
-    @Autowired
+    UserRepository userRepository;
+
     private final ReservationService reservationService;
 
-    public ReservationController(ReservationService reservationService) {
+    @Autowired
+    public ReservationController(UserRepository userRepository, ReservationService reservationService) {
+        this.userRepository = userRepository;
         this.reservationService = reservationService;
     }
-
 
     //display list of reservations
     @GetMapping("/listReservations")
@@ -40,9 +44,11 @@ public class ReservationController {
     public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
        log.info("New Reservation");
        log.info("Reservation before save {}", reservation);
+       reservation.setUser(userRepository.findById(reservation.getResEmail()).get());
         // save reservation to database
        reservationService.saveReservation(reservation);
         return "redirect:/listReservations";
+
     }
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
@@ -55,12 +61,17 @@ public class ReservationController {
         return "update_reservation";
     }
 
+//    @PostMapping("/saveupdatereservation")
+//    public String saveUpdateCourse(RedirectAttributes model, @ModelAttribute("reservation")Reservation reservation){
+//        reservationService.saveOrUpdate(reservation);
+//        model.addFlashAttribute("reservation",reservationService.findById(reservation.getId()));
+//        return "update_reservation";}
+
     @GetMapping("/deleteReservation/{id}")
     public String deleteEmployee(@PathVariable(value = "id") long id) {
-
         // call delete employee method
         this.reservationService.deleteReservationById(id);
-        return "redirect:/";
+        return "redirect:/listReservations";
     }
 
 }
