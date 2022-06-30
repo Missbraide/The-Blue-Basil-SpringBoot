@@ -38,7 +38,6 @@ public class User {
     String password;
 
     @NonNull
-    @Column(name = "role")
     boolean isManager;
 
     @NonNull

@@ -3,11 +3,11 @@ package com.tbb.TheBlueBasil.models;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import lombok.experimental.Helper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -42,15 +42,20 @@ public class Reservation {
     @Column(name ="last_name")
     String resLastName;
 
-    @NonNull
+
     @Column(name ="reserved_date")
     @DateTimeFormat(pattern = "MM/dd/yyyy")
     Date resDate;
-
+//
 //    @NonNull
 //    @Column(name = "reserved_time")
-//    @DateTimeFormat
+//    @DateTimeFormat(pattern = "hh:mm:ss")
+//    Time resTime;
+
 //
+// @NonNull
+//    @Column(name = "reserved_time")
+//   String resTime;
 
     @NonNull
     @Column(name ="phone_num")
@@ -69,9 +74,11 @@ public class Reservation {
 @Column(name = "addtl_info")
     String addInfo;
 
+
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "user_email")
- User user;
+    User user;
 
 
 //    @ToString.Exclude

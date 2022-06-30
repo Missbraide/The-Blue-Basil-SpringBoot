@@ -1,6 +1,7 @@
 package com.tbb.TheBlueBasil.controllers;
 
 
+import com.tbb.TheBlueBasil.data.ReservationRepository;
 import com.tbb.TheBlueBasil.data.UserRepository;
 import com.tbb.TheBlueBasil.models.Reservation;
 import com.tbb.TheBlueBasil.services.ReservationService;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ReservationController {
 
     UserRepository userRepository;
+    ReservationRepository reservationRepository;
 
     private final ReservationService reservationService;
 
@@ -25,6 +27,13 @@ public class ReservationController {
         this.userRepository = userRepository;
         this.reservationService = reservationService;
     }
+
+
+//    @GetMapping
+//    public String getAllReservations(Model model){
+//        model.addAttribute("reservations", reservationService.getAllReservations());
+//        return "reservation-list";
+//    }
 
     //display list of reservations
     @GetMapping("/listReservations")
