@@ -34,7 +34,7 @@
 <div   class="container-fluid login-form">
 
     <form th:action="@{/saveUser}" th:object="${user}"  method="post">
-        <h3 class="text-center">Login Form</h3>
+        <h3 class="text-center">Create An Account</h3>
         <label for="firstName"> First Name <a href="#"  class=" text-danger">*</a></label><br>
         <input type="text" id="firstName"  th:field="*{firstName}" > <br>
 
@@ -47,7 +47,9 @@
         <label for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
         <input type="text" id="password" th:field="*{password}"> <br> <br>
 
-        <button  class="login-btn pt-2 pb-2">Submit</button>
+        <button  class="signup-btn pt-2 pb-2">Create Account</button>
+
+        <a th:href="@{/users/showNewUserForm}" class="create-acct text-center d-block">Have an account? Log in</a>
     </form>
 </div>
 
