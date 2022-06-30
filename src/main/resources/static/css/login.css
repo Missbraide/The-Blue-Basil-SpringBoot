@@ -67,6 +67,9 @@ color: var(--first-color);
 text-decoration: none;
 }
 
+.create-acct:hover{
+color:var(--first-color)}
+
 button{
 
     padding-right: 80px;
