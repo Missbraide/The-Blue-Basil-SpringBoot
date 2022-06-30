@@ -15,6 +15,11 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import static java.util.Calendar.AM_PM;
+import static java.util.Calendar.PM;
 
 @Component @Slf4j
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -43,22 +48,24 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
     @PostConstruct
     public void postConstruct(){
         log.warn("============ Application CommandLine Runner ============");
+        LocalDate localDate = LocalDate.now();
+        LocalTime localTime = LocalTime.of(00, 00, 00);
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        userRepository.save(new User("Ella", "abc@aol.com", "password", true, false, true));
-        userRepository.save(new User("Lola", "lola@gmail.com", "password", false, true, false));
-        userRepository.save(new User("jax", "jax@gmail.com", "password", false, true, false));
-        userRepository.save(new User("brooke", "brooke@gmail.com", "password", false,true, false));
-        userRepository.save(new User("grace", "grace@gmail.com", "password", false, true, true ));
+        userRepository.save(new User("Ella", "Braide","ella@gmail.com", "password" ));
+        userRepository.save(new User("Lola",  "Oredola","lola@gmail.com", "password" ));
+        userRepository.save(new User("Jax", "Teller", "jax@gmail.com", "password"));
+        userRepository.save(new User("Arit", "Jack", "arit@gmail.com", "password"));
+        userRepository.save(new User("Joy", "Rex", "joy@gmail.com", "password"));
 
 
-        reservationRepository.save(new Reservation("Ella","Braide", "1234567890", "ella@gmail.com", "4", "Table by the window"));
-        reservationRepository.save(new Reservation("Lola","Oredola", "1234567890", "lola@gmail.com", "2", "Need high chair for baby"));
-        reservationRepository.save(new Reservation("Arit","Jack", "1234567890", "arit@gmail.com", "6", "Table by the window"));
-        reservationRepository.save(new Reservation("Jax","Teller", "1234567890", "jax@gmail.com", "2", "By the bar"));
-        reservationRepository.save(new Reservation("Joy","Rex", "1234567890", "joy@gmail.com", "2", "Candles"));
+        reservationRepository.save(new Reservation("Ella","Braide", LocalDate.now(),  LocalTime.of(12,00,00), "1234567890", "ella@gmail.com", "4", "Table by the window"));
+        reservationRepository.save(new Reservation("Lola","Oredola", LocalDate.now(), LocalTime.of(15,00,00), "1234567890", "lola@gmail.com", "2", "Need high chair for baby"));
+        reservationRepository.save(new Reservation("Arit","Jack", LocalDate.now(), LocalTime.of(11,30,00),"1234567890", "arit@gmail.com", "6", "Table by the window"));
+        reservationRepository.save(new Reservation("Jax","Teller", LocalDate.now(),LocalTime.of(20,00,00), "1234567890", "jax@gmail.com", "2", "By the bar"));
+        reservationRepository.save(new Reservation("Joy","Rex", LocalDate.now(),LocalTime.of(14,15,00), "1234567890", "joy@gmail.com", "2", "Candles"));
     }
 }
