@@ -50,10 +50,11 @@ public class HomeController {
     }
 
 
-//    @GetMapping(value = {"/signup"})
-//    public String viewSignUpPage(){return "signup";}
-//
-//}
+    @GetMapping(value = {"/signup"})
+    public String viewSignUpPage(){
+        return "signup";}
+
+}
 
 
 //    @GetMapping("/login")
@@ -67,4 +68,3 @@ public class HomeController {
 //    }
 //}
 
-}
