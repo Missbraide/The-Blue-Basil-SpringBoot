@@ -9,58 +9,94 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 public class UserService {
-    @Autowired
-    UserRepository userRepository;
-    ReservationRepository reservationRepository;
-    MenuRepository menuRepository;
 
 
-    public List<User> findAll(){
-
-        return userRepository.findAll();
-
-    }
-
-
-    @Transactional(rollbackOn = {NoSuchElementException.class})
-    public User findByEmail(String email) throws NoSuchElementException{
-        return userRepository.findById((email)).orElseThrow();
-    }
-
-
-    @Transactional(rollbackOn = {NoSuchElementException.class})
-    public User findByUsername(String username) throws NoSuchElementException{
-        return userRepository.findById((username)).orElseThrow();
-    }
+   
+        @Autowired
+        private UserRepository userRepository;
 
 
 
-
-    public void deleteUserById(String email) {
-        this.userRepository.deleteById(email);
-
-    }
-
-    public void saveOrUpdate(User user) {
-       userRepository.save(user);
-
-    }
-
-    public List<User> findAllSortedBy(Sort sort){
-        return userRepository.findAll(sort);
-    }
+        public List<User> getAllUsers() {
+            return userRepository.findAll();
+        }
 
 
+        public void saveUsers(User user) {
+            this.userRepository.save(user);
+        }
 
-    public User getUserById(String email) {
-      return userRepository.findById(email).orElseThrow();
 
-    }
+        public User getUserById(String email) {
+            Optional< User > optional = userRepository.findById(email);
+            User user = null;
+            if (optional.isPresent()) {
+                user = optional.get();
+            } else {
+                throw new RuntimeException(" Users not found for id :: " + email);
+            }
+            return user;
+        }
+
+
+        public void deleteUsersById(String email) {
+            this.userRepository.deleteById(email);
+        }
+    
+
+
+
+//    @Autowired
+//    UserRepository UserRepository;
+//    ReservationRepository reservationRepository;
+//    MenuRepository menuRepository;
+//
+//
+//    public List<User> findAll(){
+//
+//        return UserRepository.findAll();
+//
+//    }
+//
+//
+//    @Transactional(rollbackOn = {NoSuchElementException.class})
+//    public User findByEmail(String email) throws NoSuchElementException{
+//        return UserRepository.findById((email)).orElseThrow();
+//    }
+//
+//
+//    @Transactional(rollbackOn = {NoSuchElementException.class})
+//    public User findByUsername(String Username) throws NoSuchElementException{
+//        return UserRepository.findById((Username)).orElseThrow();
+//    }
+//
+//
+//
+//
+//    public void deleteUserById(String email) {
+//        this.UserRepository.deleteById(email);
+//
+//    }
+//
+//    public void saveOrUpdate(User User) {
+//        UserRepository.save(User);
+//
+//    }
+//
+//    public List<User> findAllSortedBy(Sort sort){
+//        return UserRepository.findAll(sort);
+//    }
+//
+//
+//
+//    public User getUserById(String email) {
+//        return UserRepository.findById(email).orElseThrow();
+//
+//    }
 }

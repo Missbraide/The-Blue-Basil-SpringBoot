@@ -53,6 +53,8 @@ public class ReservationController {
     public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
        log.info("New Reservation");
        log.info("Reservation before save {}", reservation);
+       if (userRepository.findById(reservation.getResEmail()).isEmpty() )
+           return "redirect:/showNewReservationForm";
        reservation.setUser(userRepository.findById(reservation.getResEmail()).get());
         // save reservation to database
        reservationService.saveReservation(reservation);
@@ -67,14 +69,14 @@ public class ReservationController {
 
         // set reservation as a model attribute to pre-populate the form
         model.addAttribute("reservation", reservation);
-        return "update_reservation";
+        return "update-reservation";
     }
 
 //    @PostMapping("/saveupdatereservation")
 //    public String saveUpdateCourse(RedirectAttributes model, @ModelAttribute("reservation")Reservation reservation){
 //        reservationService.saveOrUpdate(reservation);
 //        model.addFlashAttribute("reservation",reservationService.findById(reservation.getId()));
-//        return "update_reservation";}
+//        return "update-reservation";}
 
     @GetMapping("/deleteReservation/{id}")
     public String deleteEmployee(@PathVariable(value = "id") long id) {

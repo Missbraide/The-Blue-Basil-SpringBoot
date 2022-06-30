@@ -62,6 +62,7 @@ crossorigin="anonymous"
               <td th:text="${reservation.resPhone}"></td>
               <td th:text="${reservation.resNoOfGuests}"></td>
               <td th:text="${reservation.resDate}"></td>
+              <td th:text="${reservation.resTime}"></td>
               <td th:text="${reservation.addInfo}"></td>
     <td>
         <a th:href="@{/showFormForUpdate/{id}(id=${reservation.id})}" class="btn btn-update">Update</a>
