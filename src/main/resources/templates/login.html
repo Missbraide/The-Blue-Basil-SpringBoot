@@ -30,7 +30,8 @@
 </head>
 <div th:replace="fragrams/header :: header" />
 <body>
-<div>
+
+<div   class="container-fluid login-form">
     <div  th:if="${param.error}" class="error text-warning">
         Invalid username and password.
     </div>
@@ -44,11 +45,11 @@
         <label for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
         <input type="text" id="password"> <br> <br>
         <p class="text-center">Forgot Password?</p>
-        <a href="#" class="create-acct text-center d-block">Create Account</a>
+        <a th:href="@{/saveupdateuser}" class="create-acct text-center d-block">Create Account</a>
         <button  class="login-btn pt-2 pb-2">Login</button>
     </form>
 </div>
-</div
+
 
 <div th:replace="fragrams/header :: header" />
 
