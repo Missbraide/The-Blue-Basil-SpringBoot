@@ -5,7 +5,7 @@ To use this application, no external setup is required. Simply visit the live si
 
 ## Overview (Frontend/UI) ##
 Language: Html, CSS, JavaScript
-Technologies: Bootstrap, Flex  Netlify Deployment,
+Technologies: Bootstrap, Flex  Netlify Deployment,Thymeleaf
 
 ## Views ##
 
@@ -17,9 +17,13 @@ Technologies: Bootstrap, Flex  Netlify Deployment,
 #### Update ####
 
 
+
+
+
+
 ## Overview (Backend) ##
 Language: Java 11 (Maven)
-Technologies Used: Spring Boot Framework, Thymeleaf ,  Hibernate, Project Lombok, SQL, Junit 
+Technologies Used:Java, Spring Boot Framework, Spring Boot Web, Spring Boot Security, Spring Data JPA with Hibernate, MariaDB, Thymeleaf , Project Lombok, SQL, Junit 
 
 ## Models ##
 ![Screenshot 2022-06-28 150019](https://user-images.githubusercontent.com/88412294/176333571-6033412d-909b-41e1-b657-cdbff0e2cb2a.png)
