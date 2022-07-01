@@ -6,29 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-    @Test
-    void testEquals() {
-    }
-
-    @Test
-    void canEqual() {
-    }
-
-    @Test
-    void testHashCode() {
-    }
-
-    @Test
-    void getId() {
-
-    }
-
-    @Test
-    void getUsername() {
-    }
 
     @Test
     void getEmail() {
+        User user = new User("Arit", "Jack", "arit@gmail.com", "password");
+        assertEquals("arit@gmail.com", user.getEmail());
     }
 
     @Test
@@ -36,62 +18,6 @@ class UserTest {
     }
 
     @Test
-    void isManager() {
-    }
-
-    @Test
-    void isCustomer() {
-    }
-
-    @Test
-    void isEmployee() {
-    }
-
-    @Test
-    void getReservation() {
-    }
-
-    @Test
-    void getMenu() {
-    }
-
-    @Test
-    void setId() {
-    }
-
-    @Test
-    void setUsername() {
-    }
-
-    @Test
-    void setEmail() {
-    }
-
-    @Test
-    void setPassword() {
-    }
-
-    @Test
-    void setManager() {
-    }
-
-    @Test
-    void setCustomer() {
-    }
-
-    @Test
-    void setEmployee() {
-    }
-
-    @Test
-    void setReservation() {
-    }
-
-    @Test
-    void setMenu() {
-    }
-
-    @Test
-    void testToString() {
+    void getReservations() {
     }
 }
