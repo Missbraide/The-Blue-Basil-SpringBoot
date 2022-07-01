@@ -64,10 +64,12 @@
         <input th:field="*{resDate}"  type="text" id="date" placeholder="Pick Date">
         <label for="time">Arrival Time</label>
         <input type="time" placeholder="Pick Time" id="time">
+        <br>
+        <button type="submit" class="btn book-res" data-bs-toggle="modal" data-bs-target="#myModal">
+            Update Reservation
+        </button>
     </form>
-    <button type="submit" class="btn book-res" data-bs-toggle="modal" data-bs-target="#myModal">
-       Update Reservation
-    </button>
+
 </section>
 
 
@@ -86,7 +88,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body text-center m-5"><h3>Thank You <p id="namee"> </p></h3>
-                    <p>Your reservation has been confirmed</p>
+                    <p>Your reservation has been updated</p>
                     <p class="res-number">5706153446568 <br> Reservation Number</p>
 
                     <p> Your reservation request  confirmation was sent at 7:30 AM  to the email provided.
@@ -95,9 +97,9 @@
                 <!-- Modal footer -->
                 <!-- mod= modal upd = update -->
                 <div class="modal-footer" >
-                    <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a th:href="@{/listReservations}" class="mod-upd-link">Update</a></button>
+                    <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a  class="mod-upd-link">Update</a></button>
                     <button type="button" class="btn  close" data-bs-dismiss="modal" >Close</button>
-
+                    <a th:href="@{/listReservations}"> Back to Employee List</a>
                 </div>
 
             </div>
