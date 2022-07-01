@@ -20,7 +20,7 @@ import javax.persistence.*;
 @Entity
 public class AuthGroup {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    long id;
     @NonNull
     String aEmail;
     @NonNull

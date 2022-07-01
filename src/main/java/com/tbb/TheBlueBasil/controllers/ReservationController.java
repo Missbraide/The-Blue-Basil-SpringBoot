@@ -53,9 +53,9 @@ public class ReservationController {
     public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
        log.info("New Reservation");
        log.info("Reservation before save {}", reservation);
-       if (userRepository.findById(reservation.getResEmail()).isEmpty() )
-           return "redirect:/showNewReservationForm";
-       reservation.setUser(userRepository.findById(reservation.getResEmail()).get());
+//       if (userRepository.findByEmail(reservation.getResEmail()).isEmpty() )
+//           return "redirect:/showNewReservationForm";
+//       reservation.setUser(userRepository.findById(reservation.getResEmail()).get());
         // save reservation to database
        reservationService.saveReservation(reservation);
         return "redirect:/listReservations";

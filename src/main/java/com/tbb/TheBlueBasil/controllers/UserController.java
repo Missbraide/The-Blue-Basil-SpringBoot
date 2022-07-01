@@ -47,10 +47,11 @@ public class UserController {
     }
 
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") String email, Model model) {
+    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
         // get user from the service
-        User user = userService.getUserById(email);
+
+        User user = userService.getUserById(id);
 
         // set  user as a model attribute to pre-populate the form
         model.addAttribute("user", user);
@@ -58,10 +59,10 @@ public class UserController {
     }
 
     @GetMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable(value = "id") String email) {
+    public String deleteUser(@PathVariable(value = "id") long id) {
 
         // call delete  user method
-        this. userService.deleteUsersById(email);
+        this. userService.deleteUsersById(id);
         return "redirect:/";
     }
 
