@@ -1,6 +1,7 @@
 package com.tbb.TheBlueBasil.models;
 
 
+import com.tbb.TheBlueBasil.ApplicationCommandLineRunner;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
@@ -19,32 +20,40 @@ import java.util.Set;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Entity
-@Table(name = "menus")
+@Table(name = "menu")
+
+
+
+
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @NonNull
-    @Column(name = "item_name")
-     String itemName;
+//    @Column(name = "item_name")
+    String name;
 
     @NonNull
-    @Column(name = "item_desc")
-    String itemDesc;
-
-    @NonNull
-    @Column(name = "item_price")
-   Double itemPrice;
-
-    @NonNull
-    boolean availability;
+//    @Column(name = "item_desc")
+    String description;
 
 
-    @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinTable(name = "menu_items",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private Set<Item> items = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "menu", orphanRemoval = true)
     private Set<User> users = new LinkedHashSet<>();
 
 
 
 
+    //Helper method
+    public void addItem(Item item) {
+        items.add(item);
+        item.getMenus().add(this);
+    }
 }
