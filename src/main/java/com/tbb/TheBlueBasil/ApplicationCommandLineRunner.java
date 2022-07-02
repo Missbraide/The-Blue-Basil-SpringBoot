@@ -1,15 +1,13 @@
 package com.tbb.TheBlueBasil;
 
 import com.tbb.TheBlueBasil.data.*;
-import com.tbb.TheBlueBasil.models.Item;
-import com.tbb.TheBlueBasil.models.Menu;
-import com.tbb.TheBlueBasil.models.Reservation;
-import com.tbb.TheBlueBasil.models.User;
+import com.tbb.TheBlueBasil.models.*;
 import com.tbb.TheBlueBasil.services.ReservationService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -39,6 +37,8 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
         this.itemRepository = itemRepository;
     }
 
+    static BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+    static String PASSWORD = encoder.encode("password");
 
 //    static final  String PASSWORD = "password";
 //    static final  String ELLAID = "ella@gmail.com";
@@ -58,11 +58,14 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        userRepository.save(new User("Ella", "Braide","ella@gmail.com", "password" ));
+        userRepository.save(new User("Ella", "Braide","ella@gmail.com", PASSWORD ));
         userRepository.save(new User("Lola",  "Oredola","lola@gmail.com", "password" ));
         userRepository.save(new User("Jax", "Teller", "jax@gmail.com", "password"));
         userRepository.save(new User("Arit", "Jack", "arit@gmail.com", "password"));
         userRepository.save(new User("Joy", "Rex", "joy@gmail.com", "password"));
+
+        authGroupRepository.save(new AuthGroup("ella@gmail.com", "ROLE_ADMIN"));
+        authGroupRepository.save(new AuthGroup("ella@gmail.com", "ROLE_USER"));
 
 
         reservationRepository.save(new Reservation("Ella","Braide", LocalDate.now(),  LocalTime.of(12,00,00), "1234567890", "ella@gmail.com", "4", "Table by the window"));

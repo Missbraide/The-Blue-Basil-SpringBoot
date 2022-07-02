@@ -1,11 +1,15 @@
 package com.tbb.TheBlueBasil.services;
 
+import com.tbb.TheBlueBasil.data.AuthGroupRepository;
 import com.tbb.TheBlueBasil.data.MenuRepository;
 import com.tbb.TheBlueBasil.data.ReservationRepository;
 import com.tbb.TheBlueBasil.data.UserRepository;
+import com.tbb.TheBlueBasil.models.AuthGroup;
 import com.tbb.TheBlueBasil.models.User;
+import com.tbb.TheBlueBasil.validators.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,12 +22,16 @@ public class UserService {
 
 
    
-        @Autowired
+
         private UserRepository userRepository;
+        private AuthGroupRepository authGroupRepository;
+@Autowired
+    public UserService(UserRepository userRepository, AuthGroupRepository authGroupRepository) {
+        this.userRepository = userRepository;
+        this.authGroupRepository = authGroupRepository;
+    }
 
-
-
-        public List<User> getAllUsers() {
+    public List<User> getAllUsers() {
             return userRepository.findAll();
         }
 
@@ -48,8 +56,31 @@ public class UserService {
         public void deleteUserById(long id) {
             this.userRepository.deleteById(id);
         }
-    
 
+
+    @Transactional(rollbackOn = {NoSuchElementException.class})
+    public User findByEmail(String email) throws NoSuchElementException{
+        return userRepository.findByEmail(email);
+    }
+
+    public User registerNewUserAccount(User user) throws UserAlreadyExistException {
+        if (emailExists(user.getEmail())) {
+            throw new UserAlreadyExistException("There is an account with that email address: "
+                    + user.getEmail());
+        }
+        User newUser = new User();
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setEmail(user.getEmail().toLowerCase());
+        newUser.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        userRepository.save(user);
+        authGroupRepository.save(new AuthGroup(user.getEmail(), "ROLE_USER"));
+        return user;
+    }
+
+    private boolean emailExists(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
 
 
 //    @Autowired

@@ -25,6 +25,10 @@ public class MenuService {
         this.itemRepository = itemRepository;
     }
 
+//    public List<Menu> findMenuItems(long id){
+//        return Menu.findMenuItems(id);
+//    }
+
     public List<Menu> getAllMenus() {
         return null;
     }

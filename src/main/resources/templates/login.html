@@ -38,12 +38,16 @@
     <div  th:if="${param.logout}" class="error text-info">
         You have been logged out.
     </div>
-    <form th:action="@{/login/authenticate}" method="post">
+    <form th:action="@{/login/authenticate}" method="POST">
         <h3 class="text-center">Login Form</h3>
+
         <label for="userName"> Username <a href="#"  class=" text-danger">*</a></label><br>
-        <input type="text" id="userName"> <br>
-        <label for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
-        <input type="text" id="password"> <br> <br>
+        <input name="username" type="text" id="userName"> <br>
+
+
+        <label  for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
+        <input name="password" type="text" id="password"> <br> <br>
+
         <p class="text-center">Forgot Password?</p>
         <a th:href="@{/users/showNewUserForm}" class="create-acct text-center d-block">Create Account</a>
         <button  class="login-btn pt-2 pb-2">Login</button>

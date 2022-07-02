@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -48,7 +49,10 @@ public class Menu {
     @OneToMany(mappedBy = "menu", orphanRemoval = true)
     private Set<User> users = new LinkedHashSet<>();
 
-
+//    public static List<Menu> findMenuItems(long id) {
+//        item.add(item);
+//        findMenuItems().add(this)
+//    }
 
 
     //Helper method

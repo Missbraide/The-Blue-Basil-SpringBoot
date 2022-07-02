@@ -6,9 +6,12 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @Slf4j
@@ -16,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "users")
 public class UserController {
 
-
+BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
     @Autowired
     private UserService userService;
 
@@ -42,9 +45,12 @@ public class UserController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
         // save user to database
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
      userService.saveUsers(user);
         return "redirect:/users/listUsers";
     }
+
+
 
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
@@ -65,6 +71,18 @@ public class UserController {
         return "redirect:/users/listUsers";
     }
 
+//    @PostMapping("/findUserName")
+//    public RedirectView findUserId(@RequestParam(required = false) String email, RedirectAttributes redirectAttributes){
+//        log.warn("email: " + email);
+//        try {
+//            redirectAttributes.addFlashAttribute("user", userService.findByEmail(email));
+//        } catch (RuntimeException ex){
+//            ex.printStackTrace();
+//            redirectAttributes.addFlashAttribute("user_not_found",String.format("Username: %s not found!", email));
+//            return new RedirectView("/listUsers");
+//        }
+//        return new RedirectView("/listUsers");
+//    }
 
 }
 //    UserService userService;

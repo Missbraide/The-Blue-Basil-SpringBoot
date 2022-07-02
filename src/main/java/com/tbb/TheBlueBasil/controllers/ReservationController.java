@@ -51,9 +51,9 @@ public class ReservationController {
     }
     @PostMapping("/saveReservation")
     public String saveReservation(@ModelAttribute("reservation") Reservation reservation) {
-              if (userRepository.findById(reservation.getId()).isEmpty() )
-           return "redirect:/showNewReservationForm";
-       reservation.setUser(userRepository.findById(reservation.getId()).get());
+//              if (userRepository.findById(reservation.getId()).isEmpty() )
+//           return "redirect:/showNewReservationForm";
+//       reservation.setUser(userRepository.findById(reservation.getId()).get());
         // save reservation to database
        reservationService.saveReservation(reservation);
         return "redirect:/listReservations";
