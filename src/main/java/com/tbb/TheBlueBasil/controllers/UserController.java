@@ -43,7 +43,7 @@ public class UserController {
     public String saveUser(@ModelAttribute("user") User user) {
         // save user to database
      userService.saveUsers(user);
-        return "redirect:/";
+        return "redirect:/users/listUsers";
     }
 
     @GetMapping("/showFormForUpdate/{id}")
@@ -62,7 +62,7 @@ public class UserController {
 
         // call delete  user method
         this. userService.deleteUserById(id);
-        return "redirect:/";
+        return "redirect:/users/listUsers";
     }
 
 

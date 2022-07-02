@@ -61,12 +61,26 @@ label{
 .login-form p{margin-top: 65px;
 }
 
+.back-user{
+    color: var(--first-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size:20px;
+    display: block;
+    text-align: center;
 
-.create-acct{
-color: var(--first-color);
-text-decoration: none;
-}
+    }
 
+    .back-user:hover{
+
+        border: 3px solid  var(--first-color);
+        border-radius: 3px;
+        margin-right:90px;
+        margin-left: 100px;
+        padding: 8px;
+        transition: ease-in-out;
+
+        }
 button{
 
     padding-right: 80px;
@@ -91,13 +105,14 @@ button:hover{
     background-color: var(--second-color);
     color:var(--first-color);
     font-size: 30px;
+    transition: ease-in-out;
 
 }
 
 .signup-btn{
     position: relative;
    top:3px;
-	right: -70px;
+	right: -100px;
     margin-bottom: 10px;
     padding-right: 70px;
     padding-left: 70px;
