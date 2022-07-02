@@ -12,7 +12,7 @@ public class HomeController {
 //        return "index";
 //    }
 
-    @GetMapping(value = { "index"})
+    @GetMapping(value = {"/", "index"})
     public String viewHomePage() {
         return "index";
     }
