@@ -33,20 +33,20 @@ public class UserService {
         }
 
 
-        public User getUserById(String email) {
-            Optional< User > optional = userRepository.findById(email);
+        public User getUserById(long id) {
+            Optional< User > optional = userRepository.findById(id);
             User user = null;
             if (optional.isPresent()) {
                 user = optional.get();
             } else {
-                throw new RuntimeException(" Users not found for id :: " + email);
+                throw new RuntimeException(" Users not found for id :: " + id);
             }
             return user;
         }
 
 
-        public void deleteUsersById(String email) {
-            this.userRepository.deleteById(email);
+        public void deleteUserById(long id) {
+            this.userRepository.deleteById(id);
         }
     
 

@@ -22,16 +22,15 @@ import java.util.Set;
 @Entity
 @Table(name ="users")
 public class User {
-
-
-
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
     @NonNull
     @Column(name = "first_name")
     String firstName;
     @NonNull
     @Column(name = "last_name")
     String lastName;
-    @Id
+
     @NonNull
     @Column(name = "email")
     String email;
@@ -40,14 +39,15 @@ public class User {
     @Column(name = "password")
     String password;
 
-//    public User(@NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String password) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.email = email;
-//        this.password = password;
-//    }
+    public User(long id, @NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Reservation> reservations = new LinkedHashSet<>();
 
 
@@ -64,16 +64,5 @@ public class User {
         reservation.setUser(this);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return firstName.equals(user.firstName) && lastName.equals(user.lastName) && email.equals(user.email) && password.equals(user.password);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName, email, password);
-    }
 }

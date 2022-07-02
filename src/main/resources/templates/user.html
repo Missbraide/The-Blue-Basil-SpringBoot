@@ -35,11 +35,8 @@
 <section class="menu-hero">
     <div><img src="../media/home-third-sec-bg-1.jpg" class="menu-hero-pic" alt="restaurant" width="1920px"></div>
 </section>
-<section class="menu-hero">
-    <div><img src="../media/home-third-sec-bg-1.jpg" class="menu-hero-pic" alt="restaurant" width="1920px"></div>
-</section>
 <div class="container my-2">
-    <h1>Users</h1>
+    <h1>List Of Users</h1>
 
     <a th:href="@{/showNewUserForm}" class="btn btn-add btn-sm mb-3"> Add Reservation </a>
 
@@ -54,11 +51,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="reservation : ${listUsers}">
-            <td th:text="${users.firstName}"></td>
-            <td th:text="${users.lastName}"></td>
-            <td th:text="${users.email}"></td>
-            <td th:text="${users.password}"></td>
+        <tr th:each="user : ${listUsers}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.password}"></td>
             <td>
                 <a th:href="@{/showFormForUpdate/{id}(id=${user.id})}" class="btn btn-update">Update</a>
 
