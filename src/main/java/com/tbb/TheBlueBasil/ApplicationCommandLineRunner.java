@@ -1,9 +1,8 @@
 package com.tbb.TheBlueBasil;
 
-import com.tbb.TheBlueBasil.data.AuthGroupRepository;
-import com.tbb.TheBlueBasil.data.MenuRepository;
-import com.tbb.TheBlueBasil.data.ReservationRepository;
-import com.tbb.TheBlueBasil.data.UserRepository;
+import com.tbb.TheBlueBasil.data.*;
+import com.tbb.TheBlueBasil.models.Item;
+import com.tbb.TheBlueBasil.models.Menu;
 import com.tbb.TheBlueBasil.models.Reservation;
 import com.tbb.TheBlueBasil.models.User;
 import com.tbb.TheBlueBasil.services.ReservationService;
@@ -30,12 +29,16 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
     UserRepository   userRepository;
     MenuRepository menuRepository;
 
-    public ApplicationCommandLineRunner( ReservationRepository reservationRepository, AuthGroupRepository authGroupRepository, UserRepository userRepository, MenuRepository menuRepository) {
+    ItemRepository itemRepository;
+
+    public ApplicationCommandLineRunner(ReservationRepository reservationRepository, AuthGroupRepository authGroupRepository, UserRepository userRepository, MenuRepository menuRepository, ItemRepository itemRepository) {
         this.reservationRepository = reservationRepository;
         this.authGroupRepository = authGroupRepository;
         this.userRepository = userRepository;
         this.menuRepository = menuRepository;
+        this.itemRepository = itemRepository;
     }
+
 
 //    static final  String PASSWORD = "password";
 //    static final  String ELLAID = "ella@gmail.com";
@@ -67,5 +70,54 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
         reservationRepository.save(new Reservation("Arit","Jack", LocalDate.now(), LocalTime.of(11,30,00),"1234567890", "arit@gmail.com", "6", "Table by the window"));
         reservationRepository.save(new Reservation("Jax","Teller", LocalDate.now(),LocalTime.of(20,00,00), "1234567890", "jax@gmail.com", "2", "By the bar"));
         reservationRepository.save(new Reservation("Joy","Rex", LocalDate.now(),LocalTime.of(14,15,00), "1234567890", "joy@gmail.com", "2", "Candles"));
+
+        menuRepository.save(new Menu("Breakfast", "Avocado Cranberry Toast"));
+        menuRepository.save(new Menu("Breakfast", "Smoked Salmon"));
+        menuRepository.save(new Menu("Breakfast", "Lavender Maple Pancakes"));
+        menuRepository.save(new Menu("Breakfast", "Steak & Eggs"));
+        menuRepository.save(new Menu("Lunch", "Chopped Salad"));
+        menuRepository.save(new Menu("Lunch", "Fried Chicken"));
+        menuRepository.save(new Menu("Lunch", "House Special Burger"));
+        menuRepository.save(new Menu("Lunch", "Warm Grain Bowl"));
+        menuRepository.save(new Menu("Dinner", "Pan Roasted Alaskan Halibut"));
+        menuRepository.save(new Menu("Dinner", "Grilled Mishima Ranch Beef Bavette"));
+        menuRepository.save(new Menu("Dinner", "Ratatouille"));
+        menuRepository.save(new Menu("Dinner", "Seafood Pasta"));
+        menuRepository.save(new Menu("Dinner", "Pan Roasted Chicken"));
+        menuRepository.save(new Menu("Dessert", "Coconut Tapioca"));
+        menuRepository.save(new Menu("Dessert", "House Ricotta Cheese"));
+        menuRepository.save(new Menu("Dessert", "Spiced Carrot Pistachio Cake"));
+        menuRepository.save(new Menu("Dessert", "Cherry Pie a la Mode"));
+        menuRepository.save(new Menu("Cocktail", "Espresso Martini"));
+        menuRepository.save(new Menu("Cocktail", "Vesper"));
+        menuRepository.save(new Menu("Cocktail", "Uptown Manhattan"));
+        menuRepository.save(new Menu("Cocktail", "Pina Colada"));
+
+
+
+        itemRepository.save(new Item("Avocado Cranberry Toast", "Whole Grain Toast, Avocado, Cranberry Sauce, Choice of Bacon, Breakfast Sausage or Chicken Sausage", 10.99, true));
+        itemRepository.save(new Item("Smoked Salmon", "Acme Smoked Salmon, Spring Onion Crème Fraîche, Sesame Seeds, Poppy Seeds, Pickled Red Onion", 35.00, true));
+        itemRepository.save(new Item("Lavender Maple Pancakes", "Whole Grain Pancake, Lavender Chutney, Maple Syrup", 10.99, true));
+        itemRepository.save(new Item("Steak & Eggs", "7oz Hanger Steak, Gremolata, Scrambled Eggs, Cheddar, Long Island Home Fries, Toast", 36.50, true));
+        itemRepository.save(new Item("Chopped Salad", "Grilled Spring Veggies, Narragansett Feta, 6 Minute Egg, Crouton, Green Goddess", 13.99, true));
+        itemRepository.save(new Item("Fried Chicken", "7oz Hanger Steak, Gremolata, Scrambled Eggs, Cheddar, Long Island Home Fries, Toast", 15.99, false));
+        itemRepository.save(new Item("House Special Burger", "Two Patties, Cheddar Cheese, Special Sauce, B&B Pickles, Sesame “Big Marties” Bun", 18.99, true));
+        itemRepository.save(new Item("Warm Grain Bowl", "Brown & Wild Rice, Grilled Snap Peas, Spring Radishes, Cucumbers, Pepita Romesco, Choice of Smoked Salmon or Roast Turkey", 19.99, true));
+        itemRepository.save(new Item("Pan Roasted Alaskan Halibut", "Chowder Sauce, Manila Clams, Potato Parisienne, Applewood smoked bacon", 25.99, false));
+        itemRepository.save(new Item("Grilled Mishima Ranch Beef Bavette", "Bone Marrow Potato Gratin, Local Asparagus, Herbed Bordelaise Vinaigrette", 12.99, true));
+        itemRepository.save(new Item("Ratatouille", "Eggplant, Summer squash, Tomato conserva", 15.99, false));
+        itemRepository.save(new Item("Seafood Pasta", "Freshly made Spaghetti, Clams, scallop, shrimp, *bacon, garlic, mama lil's peppers, parsley, white wine, butter *can be prepared without bacon", 22.99, false));
+        itemRepository.save(new Item("Pan Roasted Chicken", "Asparagus, roasted Yukon gold potatoes, sauce Robert", 15.99, true));
+        itemRepository.save(new Item("Coconut Tapioca", "Erum glazed pineapple, makrut lime ice cream", 11.99, false));
+        itemRepository.save(new Item("House Ricotta Cheese", "stone fruit relish, hazelnut, eckholm farm honey", 13.99, true));
+        itemRepository.save(new Item("Spiced Carrot Pistachio Cake", "Rose cream cheese, carrot cake, aged dried fruit", 11.99, false));
+        itemRepository.save(new Item("Cherry Pie a la Mode", "Freshly made cherry pie, Vanilla bean ice cream", 8.99, true));
+        itemRepository.save(new Item("Espresso Martini", "Espresso, creme de cacao, vodka, coffee liqueur, dash of cream and house made chocolate sauce", 11.99, true));
+        itemRepository.save(new Item("Vesper", "Vodka, London dry gin, lillet blanc, lemon twist", 11.99, true));
+        itemRepository.save(new Item("Uptown Manhattan", "Bourbon, Antica formula, orange bitters, brandied cherry juice, orange peel", 15.99, true));
+        itemRepository.save(new Item("Pina Colada", "Rum, Freshly made pineapple juice & coconut cream", 12.99, true));
+
     }
+
+
 }
