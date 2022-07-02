@@ -16,8 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Judson:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,100;0,300;1,100;1,300&family=Suez+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/styles.css"  th:href="@{../css/styles.css}">
+    <link rel="stylesheet" href="../css/new-user.css"  th:href="@{../css/new-user.css}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <script
             src="https://kit.fontawesome.com/7fe8d89f56.js"
@@ -32,25 +32,27 @@
 <body>
 
 <div   class="container-fluid login-form">
+    <div   class="container-fluid login-form">
 
-    <form th:action="@{/saveUser}" th:object="${user}"  method="post">
-        <h3 class="text-center">Create An Account</h3>
-        <label for="firstName"> First Name <a href="#"  class=" text-danger">*</a></label><br>
-        <input type="text" id="firstName"  th:field="*{firstName}" > <br>
+        <form th:action="@{/users/saveUser}" th:object="${user}"  method="post">
+            <h3 class="text-center">Add New User</h3>
+            <label for="firstName"> First Name <a href="#"  class=" text-danger">*</a></label><br>
+            <input type="text" id="firstName"  th:field="*{firstName}" > <br>
 
-        <label for="lastName"> Last Name <a href="#"  class=" text-danger">*</a></label><br>
-        <input type="text" id="lastName"  th:field="*{firstName}" > <br>
+            <label for="lastName"> Last Name <a href="#"  class=" text-danger">*</a></label><br>
+            <input type="text" id="lastName"  th:field="*{firstName}" > <br>
 
-        <label for="email"> Email <a href="#"  class=" text-danger">*</a></label> <br>
-        <input type="text" id="email"  th:field="*{email}"> <br>
+            <label for="email"> Email <a href="#"  class=" text-danger">*</a></label> <br>
+            <input type="text" id="email"  th:field="*{email}"> <br>
 
-        <label for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
-        <input type="text" id="password" th:field="*{password}"> <br> <br>
+            <label for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
+            <input type="password" id="password" th:field="*{password}"> <br> <br>
 
-        <button  class="signup-btn pt-2 pb-2">Create Account</button>
+            <button  class="signup-btn pt-2 pb-2">Add User</button>
 
-        <a th:href="@{/users/showNewUserForm}" class="create-acct text-center d-block">Have an account? Log in</a>
-    </form>
+
+        </form>
+    </div>
 </div>
 
 
