@@ -96,8 +96,12 @@ crossorigin="anonymous"
         <!-- Modal footer -->
         <!-- mod= modal upd = update -->
         <div class="modal-footer" >
-          <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a th:href="@{/listReservations}" class="mod-upd-link">Update</a></button>
-          <button type="button" class="btn  close" data-bs-dismiss="modal" >Close</button>
+
+            <form action="">
+                <input type="button" class="btn mod-upd " data-bs-dismiss="modal" value="Update">
+            </form>
+<!--          <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a th:href="@{/listReservations}" class="mod-upd-link">Update</a></button>-->
+<!--          <button type="button" class="btn  close" data-bs-dismiss="modal" >Close</button>-->
 
         </div>
 
