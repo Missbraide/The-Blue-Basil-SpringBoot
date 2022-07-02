@@ -52,12 +52,13 @@ h3 p {
 }
 .res-number{
     font-family: var(--sub-heading-fonts);
-    font-size: 25px;
+    font-size: 25px; border-radius: 3px;
 }
 
 .res-phone, .res-email, .guest{
     padding-right: 390px;
     text-transform: uppercase;
+    border-radius: 3px;
 
 }
 .res{
@@ -65,22 +66,23 @@ h3 p {
     margin-left:300px;
     margin-bottom: 100px;
     background-image: url();
-  
+
 }
 
 .add-info{
-    max-width: 580px;
+    max-width: 586px;
     border: 3px solid var(--second-color);
     text-transform: uppercase;
     outline: none !important;
     box-shadow: none !important
 
-   
-   
+
+
 }
 .res-fname, .res-lname{
     text-transform: uppercase;
     padding-right: 95px;
+    border-radius: 3px;
 }
 
 
@@ -90,6 +92,10 @@ h3 p {
     font-family: var(--sub-heading-fonts);
     font-weight: bolder;
     font-size: 30px;
+    display: flex;
+   justify-content: center;
+   padding-left: 177px;
+    padding-right: 177px;
 }
 
 .book-res:hover{
@@ -104,7 +110,7 @@ h3 p {
 }
 
 .mod-upd, .close{
-  
+
     color: var(--first-color);
     background-color: var(--second-color);
 
@@ -123,3 +129,10 @@ h3 p {
     font-family: var(--heading-fonts);
 }
 
+.date{
+    padding-right: 390px;
+    border-radius: 3px;
+}
+
+.time{ padding-right: 465px;
+    border-radius: 3px;}
