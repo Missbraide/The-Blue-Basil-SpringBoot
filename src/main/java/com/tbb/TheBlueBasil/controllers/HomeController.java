@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller @Slf4j
 public class HomeController {
 
-    @GetMapping
-    String getIndex() {
-        return "index";
-    }
+//    @GetMapping
+//    String getIndex() {
+//        return "index";
+//    }
 
-    @GetMapping(value = {"/", "index"})
+    @GetMapping(value = { "index"})
     public String viewHomePage() {
         return "index";
     }
