@@ -54,7 +54,7 @@ public class UserController {
 
         // set  user as a model attribute to pre-populate the form
         model.addAttribute("user", user);
-        return "update_user";
+        return "update-user";
     }
 
     @GetMapping("/deleteUser/{id}")
