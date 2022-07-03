@@ -47,21 +47,21 @@
         <!-- hidden form field to handle update -->
         <input type="hidden" th:field="*{id}" />
 
-        <input type="text" th:field="*{resFirstName}" placeholder="First Name *"class="res-fname" id="name"  onchange="displayName()">
+        <input type="text" th:field="*{resFirstName}" placeholder="First Name *"class="res-fname" id="name"  onchange="displayName()" required>
 
-        <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname"><br>
+        <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname" required><br>
 
-        <input type="tel" th:field="*{resPhone}" placeholder="Phone Number *" class="res-phone"><br>
+        <input type="tel" th:field="*{resPhone}" placeholder="Phone Number *" class="res-phone" required><br>
 
-        <input type="email" th:field="*{resEmail}" placeholder="Email *" class="res-email"> <br>
+        <input type="email" th:field="*{resEmail}" placeholder="Email *" class="res-email" required> <br>
 
-        <input type="text" th:field="*{resNoOfGuests}" placeholder="Number Of Guests *" class="guest">
+        <input type="text" th:field="*{resNoOfGuests}" placeholder="Number Of Guests *" class="guest" required>
 
         <div class="mb-3 ">
             <textarea th:field="*{addInfo}" class="form-control add-info" id="exampleFormControlTextarea1" rows="3" placeholder="Additional Information"></textarea>
         </div>
         <label for="date">Reservation Date</label>
-        <input th:field="*{resDate}"  type="text" id="date" placeholder="Pick Date">
+        <input th:field="*{resDate}"  type="text" id="date" placeholder="Pick Date" required>
         <label class="date" for="time">Arrival Time</label>
         <input class="time" type="time" placeholder="Pick Time" id="time">
         <br>
@@ -74,37 +74,37 @@
 
 
 
-    <!-- The Modal -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<!--    &lt;!&ndash; The Modal &ndash;&gt;-->
+<!--    <div class="modal" id="myModal">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Reservation Updated</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
+<!--                &lt;!&ndash; Modal Header &ndash;&gt;-->
+<!--                <div class="modal-header">-->
+<!--                    <h4 class="modal-title">Reservation Updated</h4>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>-->
+<!--                </div>-->
 
 
-                <!-- Modal body -->
-                <div class="modal-body text-center m-5"><h3>Thank You <p id="namee"> </p></h3>
-                    <p>Your reservation has been updated</p>
-                    <p class="res-number">5706153446568 <br> Reservation Number</p>
+<!--                &lt;!&ndash; Modal body &ndash;&gt;-->
+<!--                <div class="modal-body text-center m-5"><h3>Thank You <p id="namee"> </p></h3>-->
+<!--                    <p>Your reservation has been updated</p>-->
+<!--                    <p class="res-number">5706153446568 <br> Reservation Number</p>-->
 
-                    <p> Your reservation request  confirmation was sent at 7:30 AM  to the email provided.
-                        <br> Questions? Call us at 123-456-7890</p></div>
+<!--                    <p> Your reservation request  confirmation was sent at 7:30 AM  to the email provided.-->
+<!--                        <br> Questions? Call us at 123-456-7890</p></div>-->
 
-                <!-- Modal footer -->
-                <!-- mod= modal upd = update -->
-                <div class="modal-footer" >
-                    <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a  class="mod-upd-link">Update</a></button>
-                    <button type="button" class="btn  close" data-bs-dismiss="modal" >Close</button>
-                    <a th:href="@{/listReservations}"> Back to Employee List</a>
-                </div>
+<!--                &lt;!&ndash; Modal footer &ndash;&gt;-->
+<!--                &lt;!&ndash; mod= modal upd = update &ndash;&gt;-->
+<!--                <div class="modal-footer" >-->
+<!--                    <button type="button" class="btn mod-upd " data-bs-dismiss="modal"> <a  class="mod-upd-link">Update</a></button>-->
+<!--                    <button type="button" class="btn  close" data-bs-dismiss="modal" >Close</button>-->
+<!--                    <a th:href="@{/listReservations}"> Back to Employee List</a>-->
+<!--                </div>-->
 
-            </div>
-        </div>
-</div>
+<!--            </div>-->
+<!--        </div>-->
+<!--</div>-->
 </div>
 
 <div th:replace="fragrams/footer :: footer"></div>

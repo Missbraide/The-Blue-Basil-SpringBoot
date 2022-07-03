@@ -37,16 +37,16 @@
         <form th:action="@{/users/saveUser}" th:object="${user}"  method="POST">
             <h3 class="text-center">Add New User</h3>
             <label for="firstName"> First Name <a href="#"  class=" text-danger">*</a></label><br>
-            <input type="text" id="firstName"  th:field="*{firstName}" > <br>
+            <input type="text" id="firstName"  th:field="*{firstName}" required> <br>
 
             <label for="lastName"> Last Name <a href="#"  class=" text-danger">*</a></label><br>
-            <input type="text" id="lastName"  th:field="*{lastName}" > <br>
+            <input type="text" id="lastName"  th:field="*{lastName}" required > <br>
 
             <label for="email"> Email <a href="#"  class=" text-danger">*</a></label> <br>
-            <input type="text" id="email"  th:field="*{email}"> <br>
+            <input type="text" id="email"  th:field="*{email}" required> <br>
 
             <label for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
-            <input type="password" id="password" th:field="*{password}"> <br> <br>
+            <input type="password" id="password" th:field="*{password}" required> <br> <br>
 
             <button  class="signup-btn pt-2 pb-2">Add User</button>
             <a th:href="@{/users/listUsers}" class="back-user text-center"> Back to Users</a>

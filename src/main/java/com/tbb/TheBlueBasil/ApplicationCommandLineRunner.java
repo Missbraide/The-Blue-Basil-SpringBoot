@@ -40,12 +40,15 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
     static BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
     static String PASSWORD = encoder.encode("password");
 
-//    static final  String PASSWORD = "password";
-//    static final  String ELLAID = "ella@gmail.com";
-//    static final  String BROOKEID ="brooke@gmail.com";
-//    static final  String JAXID = "jax@gmail.com";
-//    static final  String ROLE_ADMIN = "ROLE_ADMIN";
-//    static final  String ROLE_USER = "ROLE_USER";
+
+    static final  String ELLAID = "ella@gmail.com";
+    static final  String BROOKEID ="brooke@gmail.com";
+    static final  String LOLAID ="lola@gmail.com";
+    static final  String JAXID = "jax@gmail.com";
+    static final  String ARITID = "arit@gmail.com";
+    static final  String JOYID = "joy@gmail.com";
+    static final  String ROLE_ADMIN = "ROLE_ADMIN";
+    static final  String ROLE_USER = "ROLE_USER";
 
 
     @PostConstruct
@@ -58,14 +61,22 @@ public class ApplicationCommandLineRunner  implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        userRepository.save(new User("Ella", "Braide","ella@gmail.com", PASSWORD ));
-        userRepository.save(new User("Lola",  "Oredola","lola@gmail.com", "password" ));
-        userRepository.save(new User("Jax", "Teller", "jax@gmail.com", "password"));
-        userRepository.save(new User("Arit", "Jack", "arit@gmail.com", "password"));
-        userRepository.save(new User("Joy", "Rex", "joy@gmail.com", "password"));
+        userRepository.save(new User("Ella", "Braide",ELLAID, PASSWORD ));
+        userRepository.save(new User("Brooke", "Davis", BROOKEID, PASSWORD));
+        userRepository.save(new User("Lola",  "Oredola",LOLAID, PASSWORD ));
+        userRepository.save(new User("Jax", "Teller", JAXID, PASSWORD ));
+        userRepository.save(new User("Arit", "Jack", ARITID, PASSWORD ));
+        userRepository.save(new User("Joy", "Rex", JOYID, PASSWORD ));
 
-        authGroupRepository.save(new AuthGroup("ella@gmail.com", "ROLE_ADMIN"));
-        authGroupRepository.save(new AuthGroup("ella@gmail.com", "ROLE_USER"));
+        authGroupRepository.save(new AuthGroup(ELLAID, ROLE_ADMIN));
+        authGroupRepository.save(new AuthGroup(ELLAID, ROLE_USER));
+        authGroupRepository.save(new AuthGroup(BROOKEID, ROLE_USER));
+        authGroupRepository.save(new AuthGroup(LOLAID, ROLE_USER));
+        authGroupRepository.save(new AuthGroup(JAXID, ROLE_USER));
+        authGroupRepository.save(new AuthGroup(ARITID, ROLE_USER));
+        authGroupRepository.save(new AuthGroup(JOYID, ROLE_USER));
+
+
 
 
         reservationRepository.save(new Reservation("Ella","Braide", LocalDate.now(),  LocalTime.of(12,00,00), "1234567890", "ella@gmail.com", "4", "Table by the window"));

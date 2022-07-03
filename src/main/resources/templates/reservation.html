@@ -46,16 +46,16 @@ crossorigin="anonymous"
         </div>
 <section class="form">
     <form  th:action="@{/saveReservation}"  th:object="${reservation}" method="POST" class="form-1" id="search-form">
-        <input type="text" th:field="*{resFirstName}" placeholder="First Name *" class="res-fname" id="name"  onchange="displayName()">
-        <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname"><br>
-        <input type="tel" th:field="*{resPhone}" placeholder="Phone Number *" class="res-phone"><br>
-        <input type="email" th:field="*{resEmail}" placeholder="Email *" class="res-email"> <br>
-        <input type="text"  th:field="*{resNoOfGuests}" placeholder="Number Of Guests *" class="guest">
+        <input type="text" th:field="*{resFirstName}" placeholder="First Name *" class="res-fname" id="name"  onchange="displayName()" required>
+        <input type="text" th:field="*{resLastName}" placeholder="Last Name *" class="res-lname" required><br>
+        <input type="tel" th:field="*{resPhone}" placeholder="Phone Number *" class="res-phone" required><br>
+        <input type="email" th:field="*{resEmail}" placeholder="Email *" class="res-email" required> <br>
+        <input type="text"  th:field="*{resNoOfGuests}" placeholder="Number Of Guests *" class="guest" required>
         <div class="mb-3 ">
             <textarea class="form-control add-info"   th:field="*{addInfo}" id="exampleFormControlTextarea1" rows="3" placeholder="Additional Information"></textarea>
           </div>
           <label for="date">Reservation Date</label>
-          <input class="date" th:field="*{resDate}" type="text" id="date" placeholder="Pick Date">
+          <input class="date" th:field="*{resDate}" type="text" id="date" placeholder="Pick Date" required>
           <label  for="time">Expected Time of Arrival</label>
           <input  class="time" type="time" id="time" placeholder="Pick Time">
         <br>
@@ -70,32 +70,32 @@ crossorigin="anonymous"
 </div>
 
 
-<!-- Button to Open the Modal -->
+<!-- Button to Open the Modal-->
 
 
-<!--  &lt;!&ndash; The Modal &ndash;&gt;-->
-<!--  <div class="modal" id="myModal">-->
-<!--    <div class="modal-dialog">-->
-<!--      <div class="modal-content">-->
+<!--&lt;!&ndash;  &lt;!&ndash; The Modal &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="modal" id="myModal">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="modal-dialog">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="modal-content">&ndash;&gt;-->
 
-<!--        &lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--        <div class="modal-header">-->
-<!--          <h4 class="modal-title">Reservation Confirmation</h4>-->
-<!--          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>-->
-<!--        </div>-->
+<!--&lt;!&ndash;        &lt;!&ndash; Modal Header &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="modal-header">&ndash;&gt;-->
+<!--&lt;!&ndash;          <h4 class="modal-title">Reservation Confirmation</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
 
 
-<!--        &lt;!&ndash; Modal body &ndash;&gt;-->
-<!--        <div class="modal-body text-center m-5"><h3>Thank You <p id="namee"> </p></h3>-->
-<!--          <p>Your reservation has been confirmed</p>-->
-<!--          <p class="res-number">5706153446568 <br> Reservation Number</p>-->
+<!--&lt;!&ndash;        &lt;!&ndash; Modal body &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="modal-body text-center m-5"><h3>Thank You <p id="namee"> </p></h3>&ndash;&gt;-->
+<!--&lt;!&ndash;          <p>Your reservation has been confirmed</p>&ndash;&gt;-->
+<!--&lt;!&ndash;          <p class="res-number">5706153446568 <br> Reservation Number</p>&ndash;&gt;-->
 
-<!--          <p> Your reservation request  confirmation was sent at 7:30 AM to the email provided.-->
-<!--           <br> Questions? Call us at 123-456-7890</p></div>-->
+<!--&lt;!&ndash;          <p> Your reservation request  confirmation was sent at 7:30 AM to the email provided.&ndash;&gt;-->
+<!--&lt;!&ndash;           <br> Questions? Call us at 123-456-7890</p></div>&ndash;&gt;-->
 
-<!--        &lt;!&ndash; Modal footer &ndash;&gt;-->
-<!--        &lt;!&ndash; mod= modal upd = update &ndash;&gt;-->
-<!--        <div class="modal-footer" >-->
+<!--&lt;!&ndash;        &lt;!&ndash; Modal footer &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; mod= modal upd = update &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="modal-footer" >&ndash;&gt;-->
 
 <!--            <form action="">-->
 <!--                <input type="button" class="btn mod-upd " data-bs-dismiss="modal" value="Update">-->

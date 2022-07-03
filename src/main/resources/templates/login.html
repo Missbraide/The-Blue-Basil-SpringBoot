@@ -42,11 +42,11 @@
         <h3 class="text-center">Login Form</h3>
 
         <label for="userName"> Username <a href="#"  class=" text-danger">*</a></label><br>
-        <input name="username" type="text" id="userName"> <br>
+        <input name="username" type="text" id="userName" required> <br>
 
 
         <label  for="password"> Password <a href="#"  class=" text-danger">*</a></label> <br>
-        <input name="password" type="text" id="password"> <br> <br>
+        <input name="password" type="text" id="password" required> <br> <br>
 
         <p class="text-center">Forgot Password?</p>
         <a th:href="@{/users/showNewUserForm}" class="create-acct text-center d-block">Create Account</a>
