@@ -5,7 +5,7 @@ To use this application, no external setup is required. Simply visit the live si
 
 ## Overview (Frontend/UI) ##
 Language: Html, CSS, JavaScript
-Technologies: Bootstrap, Flex  Netlify Deployment,Thymeleaf
+Technologies: Bootstrap, Flex,Thymeleaf
 
 ## Views ##
 
