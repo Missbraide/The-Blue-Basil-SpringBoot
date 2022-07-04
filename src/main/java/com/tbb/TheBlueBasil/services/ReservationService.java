@@ -29,10 +29,6 @@ public class ReservationService {
     }
 
 
-//    public Reservation getReservationById(long id) {
-//        return null;
-//    }
-
 
     public void deleteReservationById(long id) {
         this.reservationRepository.deleteById(id);
@@ -52,12 +48,12 @@ public class ReservationService {
     }
 
 
-    public void saveOrUpdate(Reservation reservation) {
-        reservationRepository.save(reservation);
-    }
-
-    @Transactional(rollbackOn = {NoSuchElementException.class})
-    public Reservation findById(Long id) throws NoSuchElementException{
-        return reservationRepository.findById(id).orElseThrow();
-    }
+//    public void saveOrUpdate(Reservation reservation) {
+//        reservationRepository.save(reservation);
+//    }
+//
+//    @Transactional(rollbackOn = {NoSuchElementException.class})
+//    public Reservation findById(Long id) throws NoSuchElementException{
+//        return reservationRepository.findById(id).orElseThrow();
+//    }
 }
